@@ -10,12 +10,12 @@ public class BasicInkExample : MonoBehaviour {
     void Awake () {
 		// Remove the default message
 		RemoveChildren();
-		StartStory();
+		//StartStory();
 	}
 
 	// Creates a new Story object with the compiled story which we can then play!
-	void StartStory () {
-		story = new Story (inkJSONAsset.text);
+	public void StartStory (TextAsset chapter) {
+		story = new Story (chapter.text);
         if(OnCreateStory != null) OnCreateStory(story);
 		RefreshView();
 	}
@@ -23,6 +23,8 @@ public class BasicInkExample : MonoBehaviour {
     // This is the main function called every time the story changes. It does a few things:
     // Destroys all the old content and choices.
     // Continues over all the lines of text, then displays all the choices. If there are no choices, the story is finished!
+
+	
 
     private void OnMouseDown()
     {
@@ -33,13 +35,18 @@ public class BasicInkExample : MonoBehaviour {
 
 	private void Update()
 	{
+		if (story == null)
+        {
+			return;
+        }
 		if (Input.GetKeyDown(KeyCode.Space) && story.canContinue) {
 			RefreshView();
 		}
 	}
 
-	void RefreshView()
+	public void RefreshView()
     {
+		Time.timeScale = 0;
 		RemoveChildren();
 		CreateContentView(story.Continue());
 
@@ -58,9 +65,11 @@ public class BasicInkExample : MonoBehaviour {
 		}
         else if (!story.canContinue)
 		{
-			Button choice = CreateChoiceView("End of story.\nRestart?");
+
+			Button choice = CreateChoiceView("Ready?");
 			choice.onClick.AddListener(delegate {
-				StartStory();
+				Time.timeScale = 1;
+				RemoveChildren();
 			});
 		}
 	}
@@ -163,7 +172,7 @@ public class BasicInkExample : MonoBehaviour {
 	}
 
 	[SerializeField]
-	private TextAsset inkJSONAsset = null;
+	//private TextAsset inkJSONAsset = null;
 	public Story story;
 
 	[SerializeField]

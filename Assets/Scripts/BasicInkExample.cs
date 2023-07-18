@@ -114,7 +114,6 @@ public class BasicInkExample : MonoBehaviour {
 		{
 			Debug.Log(dialogueSpriteName + " sprite does not exist");
 			dialogueSprite = Resources.Load<Sprite>("DialogueSprites/" + character + "/Default");
-			return;
 		}
 
         //prepares wiggle prefab

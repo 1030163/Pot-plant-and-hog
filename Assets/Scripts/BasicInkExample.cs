@@ -102,7 +102,10 @@ public class BasicInkExample : MonoBehaviour {
 	{
 		string character = story.currentTags[0];
 		string mood = story.currentTags[1];
-
+		if (mood == null)
+        {
+			mood = "Default";
+        }
 		//finds the sprite based on the mood and character
 		// PotPlant/Sad, PotPlant/Happy, Hog/Happy
 		string dialogueSpriteName = "DialogueSprites/" + character + "/" + mood;
@@ -110,6 +113,7 @@ public class BasicInkExample : MonoBehaviour {
 		if (dialogueSprite == null)
 		{
 			Debug.Log(dialogueSpriteName + " sprite does not exist");
+			dialogueSprite = Resources.Load<Sprite>("DialogueSprites/" + character + "/Default");
 			return;
 		}
 

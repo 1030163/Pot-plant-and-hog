@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3912696438385407025}
   - component: {fileID: 500679424232967460}
-  - component: {fileID: -3331020855400816893}
+  - component: {fileID: -679777501269098296}
   m_Layer: 0
-  m_Name: Sad
+  m_Name: Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &500679424232967460
 SpriteRenderer:
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3331020855400816893
+--- !u!114 &-679777501269098296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabf73073c530bd4da44bf003c6d6cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 1
-  amplitude: 2
-  sustain: 10
-  peak: 80
-  counter: 0
+  frequency: 2
+  amplitude: 1
+  sustain: 50
+  peak: 10
+  counter: -2.88

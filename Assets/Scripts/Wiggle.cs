@@ -12,10 +12,27 @@ public class Wiggle : MonoBehaviour
         And sustain (use an if statement) (modified as %)
     */
 
-    public float frequency, waveLength, sustain;
+    //any number (related to degrees)
+    public float frequency, amplitude; 
+    //1 to 100
+    public float sustain, peak;
+    public float counter;
 
-    private void FixedUpdate()
+    private void Update()
     {
-        
+        //Debug.Log("r we paused");
+        //Might not be radians atm
+        counter += 1;
+        float angle = Mathf.Sin(counter * frequency / 90);
+        if (angle >= peak/100)
+        {
+            counter -= sustain/100;
+        }
+        else if(angle <= -peak / 100)
+        {
+            counter -= sustain / 100;
+        }
+        transform.rotation = new Quaternion(0f, 0f, amplitude*angle/100, 1f);
+        //gameObject.GetComponent<Transform>().rotation.Set(0.4f,0f, angle, 1f);
     }
 }

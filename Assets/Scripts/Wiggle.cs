@@ -17,9 +17,14 @@ public class Wiggle : MonoBehaviour
     //1 to 100
     public float sustain, peak;
     public float counter;
+    public bool stop = false;
 
     private void Update()
     {
+        if (stop)
+        {
+            return;
+        }
         //Debug.Log("r we paused");
         //Might not be radians atm
         counter += 1;

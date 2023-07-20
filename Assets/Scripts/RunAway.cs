@@ -45,8 +45,24 @@ public class RunAway : MonoBehaviour
             stamina -= 0.0005f;
             //Add particles here soon
         }
+
+        if ((velocityHome.normalized + velocityAway.normalized).magnitude <= 0.01f)
+        {
+            rb.velocity = Vector2.zero;
+            Debug.Log("Stop wiggles");
+            return;
+        }
         //determines enemy direction + speed
         rb.velocity =  (velocityHome * radiusMultiplier * directionToCentre.magnitude + velocityAway * ignore ).normalized * speed * hooHaMath * stamina;
+
+        if (rb.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * 1f,  transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1f, transform.localScale.y, transform.localScale.z);
+        }
 
         //Vector directions used to calculate direction
         Debug.DrawRay(transform.position, rb.velocity);

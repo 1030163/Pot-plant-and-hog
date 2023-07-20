@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
+    private Wiggle wiggle;
     public int MovementSpeed = 1;
 
     private Vector2 MovementDirection;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        wiggle = GetComponent<Wiggle>();
     }
 
     // Update is called once per frame
@@ -66,10 +68,12 @@ public class Player : MonoBehaviour
         int Moving;
         if (MovementDirection != new Vector2(0,0)) {
             Moving = 1;
+            wiggle.stop = false;
         }
         else
         {
             Moving = 0;
+            wiggle.stop = true;
         }
 
         rb.velocity = Moving * MovementSpeed * new Vector2(0.05f, 0.05f) * moveAngleQuaternion + 0.6f * rb.velocity;

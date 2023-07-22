@@ -7,11 +7,12 @@ public class RunAway : MonoBehaviour
     public GameObject Player, PlayingField;
     public Rigidbody2D rb;
     public float radiusMultiplier, speed, ignore, stamina;
+    public Wiggle wiggle;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        wiggle = GetComponent<Wiggle>();
     }
 
     // Update is called once per frame
@@ -49,11 +50,13 @@ public class RunAway : MonoBehaviour
         if ((velocityHome.normalized + velocityAway.normalized).magnitude <= 0.01f)
         {
             rb.velocity = Vector2.zero;
+            wiggle.speed = 0;
             Debug.Log("Stop wiggles");
             return;
         }
         //determines enemy direction + speed
         rb.velocity =  (velocityHome * radiusMultiplier * directionToCentre.magnitude + velocityAway * ignore ).normalized * speed * hooHaMath * stamina;
+        wiggle.speed = rb.velocity.magnitude;
 
         if (rb.velocity.x > 0)
         {

@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -5.9211, y: -914.5659}
-  m_SizeDelta: {x: 629.6055, y: 166.3724}
+  m_AnchoredPosition: {x: 592.64, y: -775.41}
+  m_SizeDelta: {x: 530.95, y: 287.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &22265584
 CanvasRenderer:
@@ -69,19 +69,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 52
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 24
-    m_MaxSize: 38
+    m_MinSize: 4
+    m_MaxSize: 52
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: hehehe
+    m_LineSpacing: 1.3
+  m_Text: 'hehehe cheeky little test text for the box
+
+'
 --- !u!114 &11422042
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,12 +19,12 @@ public class Wiggle : MonoBehaviour
     //Speed is how fast the counter increases as opposed to frequency
     public float counter, speed = 1;
     //Using FixedUpdate instead of Update fucked me
-    private float fixedUpdateCorrector = 9;
+    private float fixedUpdateCorrector = 100;
     public bool stop = false;
 
     
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (stop)
         {
@@ -32,15 +32,15 @@ public class Wiggle : MonoBehaviour
         }
         //Debug.Log("r we paused");
         //Might not be radians atm
-        counter += 1 * speed * fixedUpdateCorrector;
+        counter += 1 * speed * fixedUpdateCorrector * Time.unscaledDeltaTime;
         float angle = Mathf.Sin(counter * frequency / 90);
         if (angle >= peak/100)
         {
-            counter -= sustain/100*speed;
+            counter -= sustain/100*speed*Time.unscaledDeltaTime;
         }
         else if(angle <= -peak / 100)
         {
-            counter -= sustain / 100*speed;
+            counter -= sustain / 100*speed * Time.unscaledDeltaTime;
         }
         transform.rotation = new Quaternion(0f, 0f, amplitude*angle/100, 1f);
         //gameObject.GetComponent<Transform>().rotation.Set(0.4f,0f, angle, 1f);

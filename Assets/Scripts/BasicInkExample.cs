@@ -109,7 +109,10 @@ public class BasicInkExample : MonoBehaviour {
 		//finds the sprite based on the mood and character
 		// PotPlant/Sad, PotPlant/Happy, Hog/Happy
 		string dialogueSpriteName = "DialogueSprites/" + character + "/" + mood;
+		
+		
         Sprite dialogueSprite = Resources.Load<Sprite>(dialogueSpriteName);
+
 		if (dialogueSprite == null)
 		{
 			Debug.Log(dialogueSpriteName + " sprite does not exist");
@@ -118,8 +121,15 @@ public class BasicInkExample : MonoBehaviour {
 
         //prepares wiggle prefab
         //Wiggle_Sad, Wiggle_Nervous etc.
+
+
         dialogueSpritePlaceholder = Resources.Load<GameObject>("DialogueSprites/Wiggle/" + mood);
-        GameObject talker = Instantiate(dialogueSpritePlaceholder);
+		if (dialogueSpritePlaceholder == null)
+		{
+			Debug.Log(dialogueSpriteName + " Mood does not exist");
+			dialogueSpritePlaceholder = Resources.Load<GameObject>("DialogueSprites/Wiggle/Default");
+		}
+		GameObject talker = Instantiate(dialogueSpritePlaceholder);
 
 		//Assigns sprite to wiggle prefab
         talker.GetComponent<SpriteRenderer>().sprite = dialogueSprite;

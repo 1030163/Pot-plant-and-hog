@@ -13,9 +13,15 @@ public class RunAway : MonoBehaviour
     void Start()
     {
         wiggle = GetComponent<Wiggle>();
+
+
+       
+        //, MidGroundf, BackGroundf, ReallyFarBackgroundf
     }
 
     // Update is called once per frame
+
+    //Lesson learnt, if it can be a different script make it a different script
     void FixedUpdate()
     {
         //I have got to just normalize this curse you chatgtp + my laziness
@@ -56,7 +62,7 @@ public class RunAway : MonoBehaviour
         }
         //determines enemy direction + speed
         rb.velocity =  (velocityHome * radiusMultiplier * directionToCentre.magnitude + velocityAway * ignore ).normalized * speed * hooHaMath * stamina;
-        wiggle.speed = rb.velocity.magnitude;
+        wiggle.speed = rb.velocity.magnitude * 2.5f;
 
         if (rb.velocity.x > 0)
         {
@@ -71,4 +77,5 @@ public class RunAway : MonoBehaviour
         Debug.DrawRay(transform.position, rb.velocity);
         Debug.DrawRay(transform.position, directionToCentre);
     }
+
 }

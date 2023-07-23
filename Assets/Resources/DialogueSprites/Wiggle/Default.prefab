@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5499127756535471787}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -615.60126, y: -113.398674, z: -4655.9014}
-  m_LocalScale: {x: 108, y: 108, z: 108}
+  m_LocalPosition: {x: 590, y: 217, z: -4655.9014}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +102,5 @@ MonoBehaviour:
   sustain: 50
   peak: 10
   counter: -2.88
-  speed: 1
-  hope: 0
+  speed: 2
   stop: 0

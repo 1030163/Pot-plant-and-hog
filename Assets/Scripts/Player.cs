@@ -77,6 +77,16 @@ public class Player : MonoBehaviour
         }
 
         rb.velocity = Moving * MovementSpeed * new Vector2(0.05f, 0.05f) * moveAngleQuaternion + 0.6f * rb.velocity;
+
+        if (rb.velocity.x > 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * 1f, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1f, transform.localScale.y, transform.localScale.z);
+        }
+
         MovementDirection = new Vector2(0,0);
     }
 }

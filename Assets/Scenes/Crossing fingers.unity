@@ -2448,6 +2448,7 @@ MonoBehaviour:
   basicInk: {fileID: 1074380874}
   chapters:
   - {fileID: 4900000, guid: 6580d3aafbdcef34e9e252e5958c785a, type: 3}
+  - {fileID: 4900000, guid: 7d17e7031379f724ab4efae4b0a5ea89, type: 3}
   Hog: {fileID: 1955894274}
   LeftWall: {fileID: 0}
   RightWall: {fileID: 0}

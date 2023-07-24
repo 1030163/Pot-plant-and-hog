@@ -28,19 +28,7 @@ public class BasicInkExample : MonoBehaviour {
 		RefreshView();
 	}
 
-    // This is the main function called every time the story changes. It does a few things:
-    // Destroys all the old content and choices.
-    // Continues over all the lines of text, then displays all the choices. If there are no choices, the story is finished!
 
-	
-
-
- //   private void OnMouseDown()
- //   {
-	//	if (story.canContinue) {
-	//		RefreshView();
-	//	}
-	//}
 
 	private void Update()
 	{
@@ -48,13 +36,9 @@ public class BasicInkExample : MonoBehaviour {
         {
 			return;
         }
-		if (Input.GetKeyDown(KeyCode.Space) && story.canContinue) {
+		if (Input.GetKeyDown(KeyCode.Space)) {
 			RefreshView();
 			return;
-		}
-		else
-		{
-
 		}
    //     if (Input.GetKeyDown(KeyCode.Space))
    //     {
@@ -66,13 +50,19 @@ public class BasicInkExample : MonoBehaviour {
 	public void RefreshView()
     {
 
-        Time.timeScale = 0;
-        RemoveChildren();
-        CreateContentView(story.Continue());
-        DialogueSprite();
+        
 
-        if (!story.canContinue && story.currentChoices.Count > 0)
+		if (story.canContinue)
+        {
+			Time.timeScale = 0;
+			RemoveChildren();
+			CreateContentView(story.Continue());
+			DialogueSprite();
+		}
+        else if (!story.canContinue && story.currentChoices.Count > 0)
 		{
+			Time.timeScale = 0;
+			RemoveChildren();
 			for (int i = 0; i < story.currentChoices.Count; i++)
 			{
 				Choice choice = story.currentChoices[i];
@@ -84,17 +74,24 @@ public class BasicInkExample : MonoBehaviour {
 				});
 			}
 		}
-		else if (!story.canContinue)
-		{
+        else if (!story.canContinue)
+        {
 			Time.timeScale = 1;
+			RemoveChildren();
 			Debug.Log("WASD END OF DIALOGUE WOO");
 			Instantiate(WASD, gameObject.transform);
-			//Button choice = CreateChoiceView("Ready?");
-			//choice.onClick.AddListener(delegate {
-			//	Time.timeScale = 1;
-			//	RemoveChildren();
-			//});
 		}
+		//else if (!story.canContinue)
+		//{
+		//	Time.timeScale = 1;
+		//	Debug.Log("WASD END OF DIALOGUE WOO");
+		//	Instantiate(WASD, gameObject.transform);
+		//	//Button choice = CreateChoiceView("Ready?");
+		//	//choice.onClick.AddListener(delegate {
+		//	//	Time.timeScale = 1;
+		//	//	RemoveChildren();
+		//	//});
+		//}
 
 
 

@@ -23,13 +23,13 @@ public class Parralax : MonoBehaviour
     public void Parralaxer()
     {
 
-        //Y VALUES ARE WIERD!!
+        
 
         Vector2 Parralax = startPosition - new Vector2(transform.position.x, transform.position.y);
 
-        ForeGround.transform.position = Parralax * 0.1f + ForeGroundf;
-        MidGround.transform.position = Parralax * 0 + MidGroundf;
-        BackGround.transform.position = Parralax * 0.05f + BackGroundf;
+        ForeGround.transform.position = Parralax * new Vector2(0.05f,0f) + ForeGroundf;
+        MidGround.transform.position = Parralax * new Vector2(0.02f, 0f) + MidGroundf;
+        BackGround.transform.position = Parralax * new Vector2(0.01f, 0f) + BackGroundf;
     }
 
     // Update is called once per frame

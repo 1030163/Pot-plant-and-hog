@@ -6,6 +6,7 @@ using Ink.Runtime;
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
     public static event Action<Story> OnCreateStory;
+	public TextAsset tutorialStory;
 	
     void Awake () {
 		// Remove the default message
@@ -13,10 +14,16 @@ public class BasicInkExample : MonoBehaviour {
 		//StartStory();
 	}
 
-	// Creates a new Story object with the compiled story which we can then play!
-	public void StartStory (TextAsset chapter) {
+    private void Start()
+    {
+		StartStory(tutorialStory);
+    }
+
+
+    // Creates a new Story object with the compiled story which we can then play!
+    public void StartStory (TextAsset chapter) {
 		story = new Story (chapter.text);
-        if(OnCreateStory != null) OnCreateStory(story);
+        //if(OnCreateStory != null) OnCreateStory(story);
 		RefreshView();
 	}
 
@@ -26,12 +33,13 @@ public class BasicInkExample : MonoBehaviour {
 
 	
 
-    private void OnMouseDown()
-    {
-		if (story.canContinue) {
-			RefreshView();
-		}
-	}
+
+ //   private void OnMouseDown()
+ //   {
+	//	if (story.canContinue) {
+	//		RefreshView();
+	//	}
+	//}
 
 	private void Update()
 	{
@@ -41,16 +49,22 @@ public class BasicInkExample : MonoBehaviour {
         }
 		if (Input.GetKeyDown(KeyCode.Space) && story.canContinue) {
 			RefreshView();
+			return;
 		}
-	}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+			RemoveChildren();
+			Time.timeScale = 1;
+        }
+    }
 
 	public void RefreshView()
     {
-		Time.timeScale = 0;
-		RemoveChildren();
-		CreateContentView(story.Continue());
-		DialogueSprite();
 
+        Time.timeScale = 0;
+        RemoveChildren();
+        CreateContentView(story.Continue());
+        DialogueSprite();
 
         if (!story.canContinue && story.currentChoices.Count > 0)
 		{
@@ -74,7 +88,10 @@ public class BasicInkExample : MonoBehaviour {
 				RemoveChildren();
 			});
 		}
-	}
+
+
+
+    }
 
 	public GameObject dialogueSpritePlaceholder;
 
@@ -223,8 +240,8 @@ public class BasicInkExample : MonoBehaviour {
 		choiceText.text = text;
 
 		// Make the button expand to fit the text
-		HorizontalLayoutGroup layoutGroup = choice.GetComponent <HorizontalLayoutGroup> ();
-		layoutGroup.childForceExpandHeight = false;
+		//HorizontalLayoutGroup layoutGroup = choice.GetComponent <HorizontalLayoutGroup> ();
+		//layoutGroup.childForceExpandHeight = false;
 
 		return choice;
 	}

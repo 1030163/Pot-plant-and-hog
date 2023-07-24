@@ -7,9 +7,13 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     private Wiggle wiggle;
     public int MovementSpeed = 1;
+    public BasicInkExample basicInk;
+    public List<TextAsset> chapters;
+    public RunAway Hog;
 
     private Vector2 MovementDirection;
     private Vector2 moveAngleQuaternion;
+    private int iFrames = 0;
 
     public GameObject LeftWall, RightWall, Roof, Floor;
 
@@ -56,15 +60,20 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Opponent")
+        if (collision.gameObject.tag == "Opponent" && iFrames > 100)
         {
+            iFrames = 0;
+            Hog.stamina += 0.4f;
             Debug.Log("Enemy tagged");
+            basicInk.StartStory(chapters[0]);
+            chapters.Remove(chapters[0]);
         }
     }
 
 
     private void FixedUpdate()
     {
+        iFrames += 1;
         int Moving;
         if (MovementDirection != new Vector2(0,0)) {
             Moving = 1;

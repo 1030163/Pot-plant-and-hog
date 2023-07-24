@@ -1,3 +1,4 @@
+Start Game
 hi hog #PotPlant #Happy
 hi pot plant, I'm glad we could hang out today. #Hog #Relieved
 ... #Hog #Nervous
@@ -14,4 +15,5 @@ yeah... #Hog #Relieved
 You can be the tagger #Hog #Happy
 I love being the tagger #PotPlant #Happy
 I know #Hog #Happy
+.
 - -> END

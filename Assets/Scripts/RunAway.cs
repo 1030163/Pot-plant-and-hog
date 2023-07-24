@@ -6,7 +6,7 @@ public class RunAway : MonoBehaviour
 {
     public GameObject Player, PlayingField;
     public Rigidbody2D rb;
-    public float radiusMultiplier, speed, ignore, stamina;
+    public float radiusMultiplier, speed, ignore, stamina, sweatRadius;
     public Wiggle wiggle;
 
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class RunAway : MonoBehaviour
         float hooHaMath = 1/direction.magnitude;
 
         //STAMINA - enemy loses stamina if player is close by.
-        if (hooHaMath >= 1.05 && stamina > 0.8f)
+        if (hooHaMath >= sweatRadius * 0.05 && stamina > 0.8f)
         {
             stamina -= 0.0005f;
             //Add particles here soon

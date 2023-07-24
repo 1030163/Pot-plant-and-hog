@@ -1,4 +1,4 @@
-Start Game
+Start Game: Press space to start
 hi hog #PotPlant #Happy
 hi pot plant, I'm glad we could hang out today. #Hog #Relieved
 ... #Hog #Nervous

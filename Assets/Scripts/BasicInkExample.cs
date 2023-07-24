@@ -7,6 +7,7 @@ using Ink.Runtime;
 public class BasicInkExample : MonoBehaviour {
     public static event Action<Story> OnCreateStory;
 	public TextAsset tutorialStory;
+	public GameObject WASD;
 	
     void Awake () {
 		// Remove the default message
@@ -51,11 +52,15 @@ public class BasicInkExample : MonoBehaviour {
 			RefreshView();
 			return;
 		}
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-			RemoveChildren();
-			Time.timeScale = 1;
-        }
+		else
+		{
+
+		}
+   //     if (Input.GetKeyDown(KeyCode.Space))
+   //     {
+			//RemoveChildren();
+			//Time.timeScale = 1;
+   //     }
     }
 
 	public void RefreshView()
@@ -79,19 +84,21 @@ public class BasicInkExample : MonoBehaviour {
 				});
 			}
 		}
-        else if (!story.canContinue)
+		else if (!story.canContinue)
 		{
-
-			Button choice = CreateChoiceView("Ready?");
-			choice.onClick.AddListener(delegate {
-				Time.timeScale = 1;
-				RemoveChildren();
-			});
+			Time.timeScale = 1;
+			Debug.Log("WASD END OF DIALOGUE WOO");
+			Instantiate(WASD, gameObject.transform);
+			//Button choice = CreateChoiceView("Ready?");
+			//choice.onClick.AddListener(delegate {
+			//	Time.timeScale = 1;
+			//	RemoveChildren();
+			//});
 		}
 
 
 
-    }
+	}
 
 	public GameObject dialogueSpritePlaceholder;
 

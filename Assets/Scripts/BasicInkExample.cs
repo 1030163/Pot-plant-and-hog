@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using System;
 using Ink.Runtime;
+using TMPro;
+using System.Collections;
+
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
@@ -18,6 +21,7 @@ public class BasicInkExample : MonoBehaviour {
     private void Start()
     {
 		StartStory(tutorialStory);
+
     }
 
 
@@ -29,8 +33,45 @@ public class BasicInkExample : MonoBehaviour {
 	}
 
 
+	public bool canContinueToNextLine;
+	public TextMeshProUGUI storyText;
+	public float typingSpeed = 0.05f;
 
-	private void Update()
+    public IEnumerator DisplayLine(string line)
+    {
+        canContinueToNextLine = false;
+        storyText.text = line;
+        storyText.maxVisibleCharacters = 0;
+
+        bool isAddingRichTextTag = false;
+        foreach (char letter in line.ToCharArray())
+        {
+            if (letter == '<' || isAddingRichTextTag)
+            {
+                isAddingRichTextTag = true;
+                if (letter == '>')
+                {
+                    isAddingRichTextTag = false;
+                }
+            }
+            else
+            {
+                storyText = Instantiate(textPrefab) as TextMeshPro;
+                storyText.transform.SetParent(canvas.transform, false);
+                storyText.text = line;
+                storyText.maxVisibleCharacters++;
+                yield return new WaitForSeconds(typingSpeed);
+            }
+
+        }
+
+        canContinueToNextLine = true;
+    }
+
+
+
+
+    private void Update()
 	{
 		if (story == null)
         {
@@ -228,10 +269,8 @@ public class BasicInkExample : MonoBehaviour {
 
 	// Creates a textbox showing the the line of text
 	void CreateContentView (string text) {
-		Text storyText = Instantiate (textPrefab) as Text;
-		storyText.text = text;
-		storyText.transform.SetParent (canvas.transform, false);
-	}
+        StartCoroutine(DisplayLine(text));
+    }
 
 	// Creates a button showing the choice text
 	Button CreateChoiceView (string text) {
@@ -267,7 +306,7 @@ public class BasicInkExample : MonoBehaviour {
 
 	// UI Prefabs
 	[SerializeField]
-	private Text textPrefab = null;
+	private TextMeshPro textPrefab = null;
 	[SerializeField]
 	private Button buttonPrefab = null;
 }

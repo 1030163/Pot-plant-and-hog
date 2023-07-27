@@ -41,6 +41,8 @@ public class BasicInkExample : MonoBehaviour {
     {
         canContinueToNextLine = false;
         storyText.text = line;
+        storyText = Instantiate(textPrefab) as TextMeshProUGUI;
+        storyText.transform.SetParent(canvas.transform, false);
         storyText.maxVisibleCharacters = 0;
 
         bool isAddingRichTextTag = false;
@@ -56,8 +58,7 @@ public class BasicInkExample : MonoBehaviour {
             }
             else
             {
-                storyText = Instantiate(textPrefab) as TextMeshPro;
-                storyText.transform.SetParent(canvas.transform, false);
+
                 storyText.text = line;
                 storyText.maxVisibleCharacters++;
                 yield return new WaitForSeconds(typingSpeed);
@@ -306,7 +307,7 @@ public class BasicInkExample : MonoBehaviour {
 
 	// UI Prefabs
 	[SerializeField]
-	private TextMeshPro textPrefab = null;
+	private TextMeshProUGUI textPrefab = null;
 	[SerializeField]
 	private Button buttonPrefab = null;
 }

@@ -78,7 +78,7 @@ public class BasicInkExample : MonoBehaviour {
         {
 			return;
         }
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Space) && canContinueToNextLine) {
 			RefreshView();
 			return;
 		}
@@ -108,7 +108,7 @@ public class BasicInkExample : MonoBehaviour {
 			for (int i = 0; i < story.currentChoices.Count; i++)
 			{
 				Choice choice = story.currentChoices[i];
-				Button button = CreateChoiceView(choice.text.Trim());
+				Button button = CreateChoiceView(choice.text.Trim(), i);
 				// Tell the button what to do when we press it
 				button.onClick.AddListener(delegate {
 					OnClickChoiceButton(choice);
@@ -273,10 +273,10 @@ public class BasicInkExample : MonoBehaviour {
         StartCoroutine(DisplayLine(text));
     }
 
-	// Creates a button showing the choice text
-	Button CreateChoiceView (string text) {
+    // Creates a button showing the choice text		
+    Button CreateChoiceView (string text) {
 		// Creates the button from a prefab
-		Button choice = Instantiate (buttonPrefab) as Button;
+		Button choice = Instantiate(buttonPrefab[0]) as Button;
 		choice.transform.SetParent (canvas.transform, false);
 		
 		// Gets the text from the button prefab
@@ -290,8 +290,26 @@ public class BasicInkExample : MonoBehaviour {
 		return choice;
 	}
 
-	// Destroys all the children of this gameobject (all the UI)
-	void RemoveChildren () {
+	public int buttonSplit;
+    Button CreateChoiceView(string text, int i)
+    {
+        // Creates the button from a prefab
+        Button choice = Instantiate(buttonPrefab[i]) as Button;
+        choice.transform.SetParent(canvas.transform, false);
+
+        // Gets the text from the button prefab
+        Text choiceText = choice.GetComponentInChildren<Text>();
+        choiceText.text = text;
+
+        // Make the button expand to fit the text
+        //HorizontalLayoutGroup layoutGroup = choice.GetComponent <HorizontalLayoutGroup> ();
+        //layoutGroup.childForceExpandHeight = false;
+
+        return choice;
+    }
+
+    // Destroys all the children of this gameobject (all the UI)
+    void RemoveChildren () {
 		int childCount = canvas.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i) {
 			GameObject.Destroy (canvas.transform.GetChild (i).gameObject);
@@ -309,5 +327,5 @@ public class BasicInkExample : MonoBehaviour {
 	[SerializeField]
 	private TextMeshProUGUI textPrefab = null;
 	[SerializeField]
-	private Button buttonPrefab = null;
+	public Button[] buttonPrefab = null;
 }

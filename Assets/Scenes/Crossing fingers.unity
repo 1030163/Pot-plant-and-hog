@@ -1728,9 +1728,12 @@ MonoBehaviour:
   storyText: {fileID: 3157608694764924519, guid: 818d6006e8cbffe4aad055cefe363985, type: 3}
   typingSpeed: 0
   dialogueSpritePlaceholder: {fileID: 0}
+  buttonSplit: 23
   canvas: {fileID: 1074380875}
   textPrefab: {fileID: 3157608694764924519, guid: 818d6006e8cbffe4aad055cefe363985, type: 3}
-  buttonPrefab: {fileID: 4783189692263468839, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
+  buttonPrefab:
+  - {fileID: 8851375101924165602, guid: 6f01bc4fe46f3ae4c846235d7c465b14, type: 3}
+  - {fileID: 7630907000792415229, guid: 2869937a375e50d429cae9a1fd79c534, type: 3}
 --- !u!223 &1074380875
 Canvas:
   m_ObjectHideFlags: 0
@@ -2516,6 +2519,9 @@ MonoBehaviour:
   MidGround: {fileID: 73182903}
   BackGround: {fileID: 136241201}
   ReallyFarBackground: {fileID: 0}
+  foreGroundMult: 0.48
+  backGroundMult: 0.18
+  midGroundMult: 0.45
 --- !u!1 &1458682167
 GameObject:
   m_ObjectHideFlags: 0

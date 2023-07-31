@@ -36,11 +36,11 @@ public class Wiggle : MonoBehaviour
         float angle = Mathf.Sin(counter * frequency / 90);
         if (angle >= peak/100)
         {
-            counter -= sustain/100*speed*Time.unscaledDeltaTime;
+            counter -= sustain/100*speed*Time.unscaledDeltaTime * fixedUpdateCorrector;
         }
         else if(angle <= -peak / 100)
         {
-            counter -= sustain / 100*speed * Time.unscaledDeltaTime;
+            counter -= sustain / 100*speed * Time.unscaledDeltaTime * fixedUpdateCorrector;
         }
         transform.rotation = new Quaternion(0f, 0f, amplitude*angle/100, 1f);
         //gameObject.GetComponent<Transform>().rotation.Set(0.4f,0f, angle, 1f);

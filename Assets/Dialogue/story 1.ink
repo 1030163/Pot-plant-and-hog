@@ -1,4 +1,12 @@
 Start Game: Press space to start
+*woo
+*Whenever
+listen
+*Elizabeth
+*such
+once more
+*Whenever
+*ever
 Content warnings: This game deals with feeling broken and repressing emotions.
 Hi hog #PotPlant #Happy
 hi pot plant, I'm glad we could hang out today. #Hog #Relieved

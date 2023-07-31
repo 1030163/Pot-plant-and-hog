@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequency: 1
-  amplitude: 2
-  sustain: 10
-  peak: 80
+  amplitude: 6
+  sustain: 40
+  peak: 90
   counter: 0
   speed: 1
   stop: 0

@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabf73073c530bd4da44bf003c6d6cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 4
-  amplitude: 25
-  sustain: 50
-  peak: 10
+  frequency: 10
+  amplitude: 10
+  sustain: 30
+  peak: 20
   counter: 0
   speed: 1
   stop: 0

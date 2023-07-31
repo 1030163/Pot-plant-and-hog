@@ -1717,15 +1717,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e957d58a4584a8894329531ec0b096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialStory: {fileID: 4900000, guid: 9422d49c75fc7bd459924836e3718011, type: 3}
+  tutorialStory: {fileID: 4900000, guid: 1d47f5632c42aac41b69f4c42bdbdcef, type: 3}
   WASD: {fileID: 8567677898687252997, guid: ade82845306c1e5438c1b51f9f7d72bf, type: 3}
   canContinueToNextLine: 0
   storyText: {fileID: 3157608694764924519, guid: 818d6006e8cbffe4aad055cefe363985, type: 3}
   typingSpeed: 0
   dialogueSpritePlaceholder: {fileID: 0}
+  buttonSplit: 0
   canvas: {fileID: 1074380875}
   textPrefab: {fileID: 3157608694764924519, guid: 818d6006e8cbffe4aad055cefe363985, type: 3}
-  buttonPrefab: {fileID: 4783189692263468839, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
+  buttonPrefab:
+  - {fileID: 8851375101924165602, guid: 6f01bc4fe46f3ae4c846235d7c465b14, type: 3}
+  - {fileID: 7630907000792415229, guid: 2869937a375e50d429cae9a1fd79c534, type: 3}
 --- !u!223 &1074380875
 Canvas:
   m_ObjectHideFlags: 0
@@ -2448,8 +2451,9 @@ MonoBehaviour:
   MovementSpeed: 20
   basicInk: {fileID: 1074380874}
   chapters:
-  - {fileID: 4900000, guid: 6580d3aafbdcef34e9e252e5958c785a, type: 3}
-  - {fileID: 4900000, guid: 7d17e7031379f724ab4efae4b0a5ea89, type: 3}
+  - {fileID: 4900000, guid: 1a55ba6276220e145b4b8fc31df2f2cb, type: 3}
+  - {fileID: 4900000, guid: 0378d80cd7d86cf40a218b1645db199a, type: 3}
+  - {fileID: 4900000, guid: 1fe058a3a7cc3014d81e83267dc07dbc, type: 3}
   Hog: {fileID: 1955894274}
   LeftWall: {fileID: 0}
   RightWall: {fileID: 0}
@@ -3640,7 +3644,7 @@ GameObject:
   - component: {fileID: 1955894272}
   - component: {fileID: 1955894271}
   m_Layer: 0
-  m_Name: Hog
+  m_Name: Crow
   m_TagString: Opponent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

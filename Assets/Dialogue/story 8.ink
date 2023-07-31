@@ -12,9 +12,10 @@ Huh... #PotPlant #Sad
 What are you... #PotPlant #Sad
 ... #Ghost
 ... #PotPlant #Nervous
-It's not fair... #PotPlant #Nervous
+it's not fair... #PotPlant #Nervous
 ... #Ghost #Angry
-
+...I don't know what I did to Hog. #PotPlant #Teary
+(begin fight)
 
 
 - -> END

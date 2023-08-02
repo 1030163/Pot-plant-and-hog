@@ -141,28 +141,87 @@ public class BasicInkExample : MonoBehaviour {
 
 	public GameObject dialogueSpritePlaceholder;
 
-/*
-    private void GetPlayerName()
-	{
-		if (story.variablesState["playerName"] == null)
+	/*
+		private void GetPlayerName()
 		{
-			Debug.Log("NO DIALOGUE SPRITE");
-			return;
+			if (story.variablesState["playerName"] == null)
+			{
+				Debug.Log("NO DIALOGUE SPRITE");
+				return;
+			}
+			string dialogueSpriteName = story.variablesState["playerName"].ToString();
+			Sprite dialogueSprite = Resources.Load<Sprite>(dialogueSpriteName);
+			GameObject talker = Instantiate(dialogueSpritePlaceholder);
+			talker.GetComponent<SpriteRenderer>().sprite = dialogueSprite; 
 		}
-		string dialogueSpriteName = story.variablesState["playerName"].ToString();
-		Sprite dialogueSprite = Resources.Load<Sprite>(dialogueSpriteName);
-		GameObject talker = Instantiate(dialogueSpritePlaceholder);
-		talker.GetComponent<SpriteRenderer>().sprite = dialogueSprite; 
-	}
 
-	//Using Tags we will be better
-	//A tag for the speaker and one for the emotion, a script adding them together to resource.load
-	//Speaker tag can be used to colour text also hence why we seperate them
-	//
-*/
+		//Using Tags we will be better
+		//A tag for the speaker and one for the emotion, a script adding them together to resource.load
+		//Speaker tag can be used to colour text also hence why we seperate them
+		//
+	*/
+
+	public AudioSource speaker;
+
+	//public void PlayMusic()
+	//{
+	//	if (story.currentTags.Count < 3)
+	//	{
+	//		return;
+	//	}
+	//	string song = story.currentTags[2];
+	//	AudioClip songAudio = Resources.Load<AudioClip>("Audio/" + song);
+	//	StartCoroutine(fadeOut());
+	//	speaker.clip = songAudio;
+	//	speaker.Play();
+	//	StartCoroutine(fadeIn());
+	//}
+
+	public void PlayMusic()
+    {
+		if (story.currentTags.Count < 3)
+        {
+			return;
+        }
+		string song = story.currentTags[2];
+		AudioClip songAudio = Resources.Load<AudioClip>("Audio/" + song);
+		StartCoroutine(fadeOut(songAudio));
+    }
+
+	public float fading;
+	public bool okToQuiet;
+
+	public IEnumerator fadeOut(AudioClip songAudio)
+    {
+
+		while (speaker.volume > 0f)
+        {
+			okToQuiet = false;
+			Debug.Log("AAHHH " + speaker.volume);
+			speaker.volume -= fading;
+			yield return new WaitForSecondsRealtime(0.02f);
+		}
+		okToQuiet = true;
+		speaker.clip = songAudio;
+        speaker.Play();
+        StartCoroutine(fadeIn());
+        yield return null;
+    }
+
+	public IEnumerator fadeIn()
+	{
+		while (speaker.volume < 1 && okToQuiet)
+		{
+			speaker.volume += fading;
+			yield return new WaitForSecondsRealtime(0.02f);
+		}
+		yield return null;
+	}
 
 	public void DialogueSprite()
 	{
+		PlayMusic();
+
 		string character = story.currentTags[0];
 		string mood = story.currentTags[1];
 		if (mood == null)

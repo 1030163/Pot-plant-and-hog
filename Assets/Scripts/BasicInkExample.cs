@@ -129,19 +129,11 @@ public class BasicInkExample : MonoBehaviour {
 
     public void RefreshView()
     {
-		if (story.canContinue)
-        {
-			Time.timeScale = 0;
-			RemoveChildren();
-			CreateContentView(story.Continue());
-			DialogueSprite();
-
-
-        }
-        else if (!story.canContinue && story.currentChoices.Count > 0)
+		
+		if (!story.canContinue && story.currentChoices.Count > 0)
 		{
 			Time.timeScale = 0;
-			RemoveChildren();
+			//RemoveChildren();
 			for (int i = 0; i < story.currentChoices.Count; i++)
 			{
 				Choice choice = story.currentChoices[i];
@@ -153,7 +145,14 @@ public class BasicInkExample : MonoBehaviour {
 				});
 			}
 		}
-        else if (!story.canContinue)
+		else if (story.canContinue)
+		{
+			Time.timeScale = 0;
+			RemoveChildren();
+			CreateContentView(story.Continue());
+			DialogueSprite();
+		}
+		else if (!story.canContinue)
         {
 			Time.timeScale = 1;
 			RemoveChildren();
@@ -409,12 +408,13 @@ public class BasicInkExample : MonoBehaviour {
         // Gets the text from the button prefab
         Text choiceText = choice.GetComponentInChildren<Text>();
         choiceText.text = text;
+		choiceText.resizeTextForBestFit = true;
 
-        // Make the button expand to fit the text
-        //HorizontalLayoutGroup layoutGroup = choice.GetComponent <HorizontalLayoutGroup> ();
-        //layoutGroup.childForceExpandHeight = false;
+		// Make the button expand to fit the text
+		//HorizontalLayoutGroup layoutGroup = choice.GetComponent <HorizontalLayoutGroup> ();
+		//layoutGroup.childForceExpandHeight = false;
 
-        return choice;
+		return choice;
     }
 
     // Destroys all the children of this gameobject (all the UI)

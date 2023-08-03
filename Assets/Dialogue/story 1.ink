@@ -4,7 +4,6 @@ Hi hog #PotPlant #Happy #Exposition
 hi pot plant, I'm glad we could hang out today. #Hog #Relieved #Exposition
 ... #Hog #Nervous
 ... #PotPlant #Happy
-Act 2
 I caught a fish the other day #PotPlant #Happy
 huh, #Hog #Happy
 like, what kind of fish? #Hog #Releived

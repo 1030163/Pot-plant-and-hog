@@ -79,14 +79,18 @@ public class BasicInkExample : MonoBehaviour {
     private void Update()
 	{
 
-        //Debug.Log("hey is there dialogue" + story.currentText);
-        if (story.currentText == "Act 2" && loadScene)
-        {
-			loadScene = false;
-            Debug.Log("doing some shit");
-            StartCoroutine(SceneLoad());
-            return;
-        }
+		//Debug.Log(story.currentText);
+		if (story.currentTags.Count > 0)
+		{
+
+			if (loadScene && story.currentTags[0] == "Act 2")
+			{
+				loadScene = false;
+				Debug.Log("doing some shit");
+				StartCoroutine(SceneLoad());
+				return;
+			}
+		}
 
         if (story == null)
         {
@@ -112,12 +116,14 @@ public class BasicInkExample : MonoBehaviour {
 
 	public IEnumerator SceneLoad()
 	{
-		for (int i = 0; i < 30; i++)
+		for (int i = 0; i < 60; i++)
 		{
-			blackOut.transform.position += new Vector3(0.3f, 0, 0);
+			blackOut.transform.position += new Vector3(1f, 0, 0);
 			yield return new WaitForSecondsRealtime(0.02f);
 		}
-            SceneManager.LoadScene("Act 2");
+		Debug.Log("It worked?");
+		SceneManager.LoadScene("Part2");
+		Debug.Log("It worked");
             yield return null;
 	}
 
@@ -253,8 +259,21 @@ public class BasicInkExample : MonoBehaviour {
 	{
 		PlayMusic();
 
-		string character = story.currentTags[0];
-		string mood = story.currentTags[1];
+
+
+		string character = null;
+		string mood = null;
+
+		if (story.currentTags.Count > 0)
+        {
+			character = story.currentTags[0];
+		}
+		if (story.currentTags.Count > 1)
+		{
+			mood = story.currentTags[1];
+		}
+		Debug.Log("Ignore error");
+
 		if (mood == null)
         {
 			mood = "Default";

@@ -4,6 +4,9 @@ using System;
 using Ink.Runtime;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEditor.Build.Content;
+using Unity.VisualScripting;
 
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
@@ -71,16 +74,27 @@ public class BasicInkExample : MonoBehaviour {
 
 
 
+	private bool loadScene = true;
 
     private void Update()
 	{
-		if (story == null)
+
+        //Debug.Log("hey is there dialogue" + story.currentText);
+        if (story.currentText == "Act 2" && loadScene)
+        {
+			loadScene = false;
+            Debug.Log("doing some shit");
+            StartCoroutine(SceneLoad());
+            return;
+        }
+
+        if (story == null)
         {
 			return;
         }
 		if (Input.GetKeyDown(KeyCode.Space) && canContinueToNextLine) {
 			RefreshView();
-			return;
+            return;
 		}
    //     if (Input.GetKeyDown(KeyCode.Space))
    //     {
@@ -89,18 +103,35 @@ public class BasicInkExample : MonoBehaviour {
    //     }
     }
 
-	public void RefreshView()
+	//public void SceneLoad(string SceneLoadInfo)
+	//{
+	//    SceneManager.LoadScene(SceneLoadInfo);
+	//}
+
+	public GameObject blackOut;
+
+	public IEnumerator SceneLoad()
+	{
+		for (int i = 0; i < 30; i++)
+		{
+			blackOut.transform.position += new Vector3(0.3f, 0, 0);
+			yield return new WaitForSecondsRealtime(0.02f);
+		}
+            SceneManager.LoadScene("Act 2");
+            yield return null;
+	}
+
+    public void RefreshView()
     {
-
-        
-
 		if (story.canContinue)
         {
 			Time.timeScale = 0;
 			RemoveChildren();
 			CreateContentView(story.Continue());
 			DialogueSprite();
-		}
+
+
+        }
         else if (!story.canContinue && story.currentChoices.Count > 0)
 		{
 			Time.timeScale = 0;
@@ -197,7 +228,7 @@ public class BasicInkExample : MonoBehaviour {
 		while (speaker.volume > 0f)
         {
 			okToQuiet = false;
-			Debug.Log("AAHHH " + speaker.volume);
+			//Debug.Log("AAHHH " + speaker.volume);
 			speaker.volume -= fading;
 			yield return new WaitForSecondsRealtime(0.02f);
 		}

@@ -22,8 +22,33 @@ public class RunAway : MonoBehaviour
     // Update is called once per frame
 
     //Lesson learnt, if it can be a different script make it a different script
+
+    public float HuntTimer, huntSpeed = 0;
+    public bool hunt, huntCapable = false;
+    public float chasePeriod, runPeriod;
+    public Sprite beastMode, regularMode;
+
+    private void Hunt()
+    {
+        HuntTimer -= Time.deltaTime;
+        if (HuntTimer <= 0)
+        {
+            hunt = !hunt;
+            if (hunt)
+            {
+                GetComponent<SpriteRenderer>().sprite = beastMode;
+                HuntTimer = chasePeriod;
+            }
+            else {
+                GetComponent<SpriteRenderer>().sprite = regularMode;
+                HuntTimer = runPeriod; 
+            }
+        }
+    }
+
     void FixedUpdate()
     {
+
         //I have got to just normalize this curse you chatgtp + my laziness
 
         //point away from player
@@ -53,6 +78,20 @@ public class RunAway : MonoBehaviour
             //Add particles here soon
         }
 
+        if (huntCapable)
+        {
+            Hunt();
+        }
+
+        if (hunt)
+        {
+            rb.velocity = (-velocityAway * ignore).normalized * speed * direction.magnitude * huntSpeed;
+        }
+        else
+        { 
+            rb.velocity = (velocityHome * radiusMultiplier * directionToCentre.magnitude + velocityAway * ignore).normalized * speed * hooHaMath * stamina;
+        }
+
         if ((velocityHome.normalized + velocityAway.normalized).magnitude <= 0.01f)
         {
             rb.velocity = Vector2.zero;
@@ -60,8 +99,9 @@ public class RunAway : MonoBehaviour
             Debug.Log("Stop wiggles");
             return;
         }
+
         //determines enemy direction + speed
-        rb.velocity =  (velocityHome * radiusMultiplier * directionToCentre.magnitude + velocityAway * ignore ).normalized * speed * hooHaMath * stamina;
+
         wiggle.speed = rb.velocity.magnitude * 2.5f;
 
         if (rb.velocity.x > 0)

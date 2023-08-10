@@ -57,11 +57,35 @@ public class Player : MonoBehaviour
     *done* enemies direct away from the player and lean further tangential to the centre of the arena the further out they go from it.
      */
 
+    public GameObject playerHealth, enemyHealth;
+    public TextAsset outOfHealth;
+
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Opponent" && iFrames > 100)
         {
+            if (collision.gameObject.GetComponent<RunAway>().huntCapable) {
+                if (collision.gameObject.GetComponent<RunAway>().hunt)
+                {
+                    playerHealth.GetComponent<Health>().health -= 1;
+
+                    if (playerHealth.GetComponent<Health>().health <= 0)
+                    {
+                        Debug.Log("dying");
+                        basicInk.StartStory(outOfHealth);
+                        iFrames = 0;
+                        playerHealth.GetComponent<Health>().health = 3;
+                    }
+                    iFrames = 0;
+                    return;
+                }
+                else
+                {
+                    //enemyHealth.GetComponent<Health>().health -= 1;
+                }
+            }
+
             iFrames = 0;
             Hog.stamina += 0.4f;
             Debug.Log("Enemy tagged");

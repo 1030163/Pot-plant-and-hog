@@ -90,6 +90,7 @@ public class BasicInkExample : MonoBehaviour {
 				StartCoroutine(SceneLoad());
 				return;
 			}
+
 		}
 
         if (story == null)

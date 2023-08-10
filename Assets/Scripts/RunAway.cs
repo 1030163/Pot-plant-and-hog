@@ -37,12 +37,19 @@ public class RunAway : MonoBehaviour
             if (hunt)
             {
                 GetComponent<SpriteRenderer>().sprite = beastMode;
+                GetComponent<Wiggle>().multiplier = 2;
                 HuntTimer = chasePeriod;
             }
-            else {
+            else
+            {
                 GetComponent<SpriteRenderer>().sprite = regularMode;
-                HuntTimer = runPeriod; 
+                GetComponent<Wiggle>().multiplier = 1;
+                HuntTimer = runPeriod;
             }
+        }
+        if (HuntTimer <= 0.8f)
+        {
+            GetComponent<SpriteRenderer>().sprite = beastMode;
         }
     }
 

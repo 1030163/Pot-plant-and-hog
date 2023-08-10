@@ -17,7 +17,7 @@ public class Wiggle : MonoBehaviour
     //1 to 100
     public float sustain, peak;
     //Speed is how fast the counter increases as opposed to frequency
-    public float counter, speed = 1;
+    public float counter, speed = 1, multiplier = 1;
     //Using FixedUpdate instead of Update fucked me
     private float fixedUpdateCorrector = 100;
     public bool stop = false;
@@ -33,7 +33,7 @@ public class Wiggle : MonoBehaviour
         //Debug.Log("r we paused");
         //Might not be radians atm
         counter += 1 * speed * fixedUpdateCorrector * Time.unscaledDeltaTime;
-        float angle = Mathf.Sin(counter * frequency / 90);
+        float angle = Mathf.Sin(counter * frequency * multiplier / 90);
         if (angle >= peak/100)
         {
             counter -= sustain/100*speed*Time.unscaledDeltaTime * fixedUpdateCorrector;

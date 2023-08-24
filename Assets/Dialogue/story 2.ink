@@ -1,4 +1,4 @@
-Gotcha #PotPlant #Happy
+Gotcha! #PotPlant #Happy
 Haha, yeah but I can keep running #Hog #Happy
 That wasn't a fair catch lets go again #Hog #Nervous
 Hog? #PotPlant #Nervous

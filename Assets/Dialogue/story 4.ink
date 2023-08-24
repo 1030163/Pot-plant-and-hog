@@ -6,7 +6,6 @@ the fun never stops when you... #Crow #Happy
 ...organise! #Crow #Excited
 ...the shiny rocks #Crow #Happy
 do doo do dooooo #Crow #Happy
-... (pot plant enters) #Crow #Happy
 OH, hi potplant #Crow #happy
 hiya. #PotPlant #Nervous
 I was just sorting my shiny rocks #Crow #Happy
@@ -39,5 +38,4 @@ BUT! #Crow #Excited
 the assassin will have opportunities to attack back! #Crow #Excited
 This makes the assassin really cool, especially cos I'll turn red when attacking back! #Crow #Excited
 Ok, let's play. #Crow #Happy
-.
 - -> END

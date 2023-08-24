@@ -1,5 +1,6 @@
 Start Game: Press space to start
-Content warnings: This game deals with feeling broken and repressing emotions.
+Content warning: This game deals with feeling broken and repressing emotions.
+Act 1: The best of friends
 I caught a fish the other day. #PotPlant #Happy
 huh? #Hog #Happy
 I caught a fish. #PotPlant #Happy
@@ -16,7 +17,7 @@ do you think we hang out too much? #Hog #Nervous
         I think it shows how comfortable we are together. #PotPlant #Happy
     *A bit #PotPlant #Concerned
         Sometimes our talks get a bit dull #PotPlant #Concerned
-        But in the end you're still my best friend #PotPlant #Happy
+        But in the end you're still my friend #PotPlant #Happy
         So you don't have to worry. #PotPlant #Happy
     -
 Sure, #Hog #Concern

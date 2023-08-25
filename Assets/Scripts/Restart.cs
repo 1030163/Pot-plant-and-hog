@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
-    private float resetTime = 0;
+    public float resetTime = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +18,15 @@ public class Restart : MonoBehaviour
         if (Input.anyKey) {
             resetTime = 0;
         }
-        if (resetTime >= 10)
+        if (resetTime >= 12000)
         {
             SceneManager.LoadScene("Part1", LoadSceneMode.Single);
         }
         resetTime += Time.fixedDeltaTime;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Part1", LoadSceneMode.Single);
     }
 }

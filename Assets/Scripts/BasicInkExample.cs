@@ -90,8 +90,15 @@ public class BasicInkExample : MonoBehaviour {
 				StartCoroutine(SceneLoad());
 				return;
 			}
-
-		}
+			if (story.currentTags[0] == "Reset")
+			{
+                SceneManager.LoadScene("Part1", LoadSceneMode.Single);
+            }
+            if (story.currentTags[0] == "WaitToReset")
+            {
+				StartCoroutine(ResetAndWait());
+            }
+        }
 
         if (story == null)
         {
@@ -108,12 +115,17 @@ public class BasicInkExample : MonoBehaviour {
    //     }
     }
 
-	//public void SceneLoad(string SceneLoadInfo)
-	//{
-	//    SceneManager.LoadScene(SceneLoadInfo);
-	//}
+	public IEnumerator ResetAndWait()
+	{
+        yield return new WaitForSecondsRealtime(10f);
+        SceneManager.LoadScene("Part1", LoadSceneMode.Single);
+    }
+    //public void SceneLoad(string SceneLoadInfo)
+    //{
+    //    SceneManager.LoadScene(SceneLoadInfo);
+    //}
 
-	public GameObject blackOut;
+    public GameObject blackOut;
 
 	public IEnumerator SceneLoad()
 	{

@@ -11,5 +11,6 @@ what, Pot, just calm down a little #Crow #Hurt
 I'm sorry. #PotPlant #Sad
 I didn't want to hit you I -#PotPlant #Sad
 *Runaway
-This is the end of the demo thanks for playing. (:
+This is the end of the demo thanks for playing. (: #WaitToReset
+. #Reset
 - -> END
